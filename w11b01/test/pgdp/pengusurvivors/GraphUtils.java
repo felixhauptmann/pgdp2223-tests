@@ -19,9 +19,7 @@ public class GraphUtils {
         try {
             Field field = vertex.getClass().getDeclaredField("label");
             field.setAccessible(true);
-            var label = (String) field.get(vertex);
-            var splitLabel = label.split("-");
-            return splitLabel[splitLabel.length - 1].trim();
+            return "\"" + field.get(vertex) + "\"";
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
